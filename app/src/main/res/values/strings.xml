@@ -5,4 +5,16 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="compass">compass</string>
+    <string name="compass_image_content_desc">Compass image</string>
+    <string name="not_available">NA</string>
+    <string name="stop_notifications">Stop Notifications</string>
+    <string name="light_sensor">light sensor</string>
+    <string name="magnetometer">magnetometer</string>
+    <string name="proximity_sensor">proximity sensor</string>
+    <string name="proximity">proximity</string>
+    <string name="_0">0</string>
+    <string name="z_acceleration_m_s_2">Z Acceleration (m/s^2):</string>
+    <string name="y_acceleration_m_s_2">Y Acceleration (m/s^2):</string>
+    <string name="x_acceleration_m_s_2">X Acceleration (m/s^2):</string>
+    <string name="cube">cube</string>
 </resources>

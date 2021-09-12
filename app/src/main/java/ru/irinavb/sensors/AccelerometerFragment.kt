@@ -1,59 +1,64 @@
 package ru.irinavb.sensors
 
+import android.content.Context.SENSOR_SERVICE
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
+import ru.irinavb.sensors.databinding.FragmentAccelerometerBinding
+import ru.irinavb.sensors.databinding.FragmentCompassBinding
+import ru.irinavb.sensors.databinding.FragmentHomeBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class AccelerometerFragment : Fragment(), SensorEventListener {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AccelerometerFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class AccelerometerFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentAccelerometerBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var sensorManager: SensorManager
+    private lateinit var accelerometer: Sensor
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_accelerometer, container, false)
+    ): View {
+        _binding = FragmentAccelerometerBinding.inflate(inflater, container, false)
+        sensorManager = activity?.getSystemService(SENSOR_SERVICE) as SensorManager
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AccelerometerFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AccelerometerFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onResume() {
+        super.onResume()
+        val accelerationSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        if (accelerationSensor != null) {
+            sensorManager.registerListener(
+                this,
+                accelerationSensor,
+                SensorManager.SENSOR_DELAY_NORMAL
+            )
+        } else {
+            Toast.makeText(requireContext(), "No acceleration Sensor found!", Toast.LENGTH_LONG).show()
+        }
     }
+
+    override fun onPause() {
+        super.onPause()
+        sensorManager.unregisterListener(this)
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        binding.xAccelerationValueText.text = event!!.values[0].toString()
+        binding.yAccelerationValueText.text = event.values[1].toString()
+        binding.zAccelerationValueText.text = event.values[2].toString()
+    }
+
+    override fun onAccuracyChanged(event: Sensor?, p1: Int) {}
 }

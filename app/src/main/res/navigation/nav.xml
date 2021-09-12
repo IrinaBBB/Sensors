@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_homeFragment_to_accelerometerFragment"
             app:destination="@id/accelerometerFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_lightSensorFragment"
+            app:destination="@id/lightSensorFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_proximitySensorFragment"
+            app:destination="@id/proximitySensorFragment" />
     </fragment>
     <fragment
         android:id="@+id/accelerometerFragment"
@@ -27,4 +33,14 @@
         android:name="ru.irinavb.sensors.CompassFragment"
         android:label="fragment_compass"
         tools:layout="@layout/fragment_compass" />
+    <fragment
+        android:id="@+id/lightSensorFragment"
+        android:name="ru.irinavb.sensors.LightSensorFragment"
+        android:label="fragment_light_sensor"
+        tools:layout="@layout/fragment_light_sensor" />
+    <fragment
+        android:id="@+id/proximitySensorFragment"
+        android:name="ru.irinavb.sensors.ProximitySensorFragment"
+        android:label="fragment_proximity_sensor"
+        tools:layout="@layout/fragment_proximity_sensor" />
 </navigation>
