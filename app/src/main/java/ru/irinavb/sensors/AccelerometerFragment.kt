@@ -5,16 +5,21 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat.getSystemService
 import ru.irinavb.sensors.databinding.FragmentAccelerometerBinding
 import ru.irinavb.sensors.databinding.FragmentCompassBinding
 import ru.irinavb.sensors.databinding.FragmentHomeBinding
+import java.time.LocalDateTime
+
+private const val FILE_ACCELEROMETER = "accelerometer.txt"
 
 class AccelerometerFragment : Fragment(), SensorEventListener {
 
@@ -54,10 +59,16 @@ class AccelerometerFragment : Fragment(), SensorEventListener {
         sensorManager.unregisterListener(this)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onSensorChanged(event: SensorEvent?) {
         binding.xAccelerationValueText.text = event!!.values[0].toString()
         binding.yAccelerationValueText.text = event.values[1].toString()
         binding.zAccelerationValueText.text = event.values[2].toString()
+
+        val text =  "accelerometer ${LocalDateTime.now()}: X -> ${event.values[0]}, " +
+                "Y -> ${event.values[1]}, Z -> ${event.values[2]}\n"
+
+        Util.writeToInternalStorage(requireContext(), FILE_ACCELEROMETER, text)
     }
 
     override fun onAccuracyChanged(event: Sensor?, p1: Int) {}
