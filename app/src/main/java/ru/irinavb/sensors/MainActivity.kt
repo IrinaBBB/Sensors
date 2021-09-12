@@ -23,7 +23,7 @@ import java.time.LocalDateTime
 private const val TAG = "MainActivity"
 private const val FILE_ACCELEROMETER = "accelerometer.txt"
 
-class MainActivity : AppCompatActivity(), SensorEventListener{
+class MainActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityMainBinding
 
@@ -41,46 +41,46 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
-        sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL)
+        //sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL)
     }
 
-    @SuppressLint("NewApi", "StringFormatMatches")
-    override fun onSensorChanged(sensorEvent: SensorEvent?) {
-        val now = currentTimeMillis()
-            val text = "accelerometer ${LocalDateTime.now()}: X -> ${sensorEvent!!.values[0]}, " +
-                    "Y -> ${sensorEvent.values[1]}, Z -> ${sensorEvent.values[2]}\n"
-            Log.d(TAG, "onSensorChanged: $text")
-
-            binding.accelerometerValueTextView.text = resources.getString(R.string.accelerometer_text,
-                sensorEvent.values[0], sensorEvent.values[1], sensorEvent.values[2])
-
-
-            writeToInternalStorage(FILE_ACCELEROMETER, text)
-    }
-
-    override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
-    }
-
-    override fun onStop() {
-        super.onStop()
-        sensorManager.unregisterListener(this)
-    }
-
-    private fun writeToInternalStorage(file: String, text: String) {
-        var fos: FileOutputStream? = null
-        try {
-            fos = openFileOutput(file, MODE_APPEND)
-            fos.write(text.toByteArray(StandardCharsets.UTF_8))
-        } catch (e: IOException) {
-            e.printStackTrace()
-        } finally {
-            if (fos != null) {
-                try {
-                    fos.close()
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-            }
-        }
-    }
+//    @SuppressLint("NewApi", "StringFormatMatches")
+//    override fun onSensorChanged(sensorEvent: SensorEvent?) {
+//        val now = currentTimeMillis()
+//            val text = "accelerometer ${LocalDateTime.now()}: X -> ${sensorEvent!!.values[0]}, " +
+//                    "Y -> ${sensorEvent.values[1]}, Z -> ${sensorEvent.values[2]}\n"
+//            Log.d(TAG, "onSensorChanged: $text")
+//
+//            binding.accelerometerValueTextView.text = resources.getString(R.string.accelerometer_text,
+//                sensorEvent.values[0], sensorEvent.values[1], sensorEvent.values[2])
+//
+//
+//            writeToInternalStorage(FILE_ACCELEROMETER, text)
+//    }
+//
+//    override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
+//    }
+//
+//    override fun onStop() {
+//        super.onStop()
+//        sensorManager.unregisterListener(this)
+//    }
+//
+//    private fun writeToInternalStorage(file: String, text: String) {
+//        var fos: FileOutputStream? = null
+//        try {
+//            fos = openFileOutput(file, MODE_APPEND)
+//            fos.write(text.toByteArray(StandardCharsets.UTF_8))
+//        } catch (e: IOException) {
+//            e.printStackTrace()
+//        } finally {
+//            if (fos != null) {
+//                try {
+//                    fos.close()
+//                } catch (e: IOException) {
+//                    e.printStackTrace()
+//                }
+//            }
+//        }
+//    }
 }
