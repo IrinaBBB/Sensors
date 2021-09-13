@@ -9,7 +9,7 @@ class Sensors : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@Sensors)
-            modules(listOf(appModule))
+            modules(listOf(appModule, viewModelModule))
         }
     }
 }

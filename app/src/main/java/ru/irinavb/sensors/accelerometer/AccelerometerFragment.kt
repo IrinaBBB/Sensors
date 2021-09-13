@@ -1,6 +1,5 @@
 package ru.irinavb.sensors
 
-import android.content.Context.SENSOR_SERVICE
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
@@ -19,7 +18,7 @@ import java.time.LocalDateTime
 
 private const val FILE_ACCELEROMETER = "accelerometer.txt"
 
-class AccelerometerFragment() : Fragment(), SensorEventListener {
+class AccelerometerFragment : Fragment(), SensorEventListener {
 
     private var _binding: FragmentAccelerometerBinding? = null
     private val binding get() = _binding!!
