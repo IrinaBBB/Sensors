@@ -1,12 +1,14 @@
 package ru.irinavb.sensors
 
+import android.hardware.Sensor
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import org.koin.android.ext.android.get
+import org.koin.core.context.GlobalContext.get
 import ru.irinavb.sensors.databinding.ActivityMainBinding
 
-private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity(){
 
@@ -24,6 +26,9 @@ class MainActivity : AppCompatActivity(){
         navController = navHostFragment.navController
 
         setContentView(view)
+
+        val test = get<Test>()
+        test.getSensorManagerFromTest().getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)
     }
 
     override fun onSupportNavigateUp(): Boolean {

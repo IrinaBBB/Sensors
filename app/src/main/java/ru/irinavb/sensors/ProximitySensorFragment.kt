@@ -13,7 +13,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import ru.irinavb.sensors.databinding.FragmentLightSensorBinding
 import ru.irinavb.sensors.databinding.FragmentProximitySensorBinding
 import java.time.LocalDateTime
 

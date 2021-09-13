@@ -13,12 +13,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import org.koin.android.ext.android.get
 import ru.irinavb.sensors.databinding.FragmentAccelerometerBinding
 import java.time.LocalDateTime
 
 private const val FILE_ACCELEROMETER = "accelerometer.txt"
 
-class AccelerometerFragment : Fragment(), SensorEventListener {
+class AccelerometerFragment() : Fragment(), SensorEventListener {
 
     private var _binding: FragmentAccelerometerBinding? = null
     private val binding get() = _binding!!
@@ -31,7 +32,9 @@ class AccelerometerFragment : Fragment(), SensorEventListener {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAccelerometerBinding.inflate(inflater, container, false)
-        sensorManager = activity?.getSystemService(SENSOR_SERVICE) as SensorManager
+        //sensorManager = activity?.getSystemService(SENSOR_SERVICE) as SensorManager
+        sensorManager = get<Test>().getSensorManagerFromTest()
+
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
         sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL)
         return binding.root
