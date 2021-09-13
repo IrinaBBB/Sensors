@@ -38,8 +38,13 @@ class HomeFragment : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_lightSensorFragment)
         }
         binding.proximityCardView.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id
-                .action_homeFragment_to_proximitySensorFragment)
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_proximitySensorFragment)
+        }
+        binding.orientationCardView.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_orientationFragment)
+        }
+        binding.stepsCardView.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_stepsFragment)
         }
     }
 

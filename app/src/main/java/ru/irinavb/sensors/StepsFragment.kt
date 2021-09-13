@@ -13,14 +13,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import ru.irinavb.sensors.databinding.FragmentLightSensorBinding
+import ru.irinavb.sensors.databinding.FragmentStepsBinding
 import java.time.LocalDateTime
 
-private const val FILE_LIGHT_SENSOR = "light_sensor.txt"
+private const val FILE_STEPS = "Steps_sensor.txt"
 
-class LightSensorFragment : Fragment(), SensorEventListener {
+class StepsFragment : Fragment(), SensorEventListener {
 
-    private var _binding: FragmentLightSensorBinding? = null
+    private var _binding: FragmentStepsBinding? = null
     private val binding get() = _binding!!
     private lateinit var sensorManager: SensorManager
     private var accelerometer: Sensor? = null
@@ -29,23 +29,23 @@ class LightSensorFragment : Fragment(), SensorEventListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentLightSensorBinding.inflate(inflater, container, false)
+        _binding = FragmentStepsBinding.inflate(inflater, container, false)
         sensorManager = activity?.getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
         return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        val lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)
-        if (lightSensor != null) {
+        val sensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
+        if (sensor != null) {
             sensorManager.registerListener(
                 this,
-                lightSensor,
+                sensor,
                 SensorManager.SENSOR_DELAY_NORMAL
             )
         } else {
-            Toast.makeText(requireContext(), "No Light Sensor found!", Toast.LENGTH_LONG)
+            Toast.makeText(requireContext(), "No Steps Counter Sensor found!", Toast.LENGTH_LONG)
                 .show()
         }
     }
@@ -62,11 +62,11 @@ class LightSensorFragment : Fragment(), SensorEventListener {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onSensorChanged(event: SensorEvent?) {
-        binding.lightSensorText.text = event!!.values[0].toString()
+        binding.stepsCounterText.text = event!!.values[0].toString()
 
-        val text = "light sensor ${LocalDateTime.now()}: Ambient Light (lx): ${event.values[0]}\n"
+        val text = "Steps ${LocalDateTime.now()}: Steps Count: ${event.values[0]}\n"
 
-        Util.writeToInternalStorage(requireContext(), FILE_LIGHT_SENSOR, text)
+        Util.writeToInternalStorage(requireContext(), FILE_STEPS, text)
     }
 
     override fun onAccuracyChanged(event: Sensor?, p1: Int) {

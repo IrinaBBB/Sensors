@@ -17,4 +17,13 @@
     <string name="y_acceleration_m_s_2">Y Acceleration (m/s^2):</string>
     <string name="x_acceleration_m_s_2">X Acceleration (m/s^2):</string>
     <string name="cube">cube</string>
+    <string name="x_geomagnetic_field_956_t">X Geomagnetic Field (μT):</string>
+    <string name="z_geomagnetic_field_t">Z Geomagnetic Field (μT):</string>
+    <string name="y_geomagnetic_field_t">Y Geomagnetic Field (μT):</string>
+    <string name="ambient_light_lx">Ambient Light (lx):</string>
+    <string name="orientation">orientation</string>
+    <string name="steps">steps</string>
+    <string name="azimuth_angle_around_the_z_axis">Azimuth (angle around the z-axis in &#176;)</string>
+    <string name="pitch_angle_around_the_x_axis">Pitch (angle around the x-axis in &#176;)</string>
+    <string name="roll_angle_around_the_y_axis">Roll (angle around the y-axis in &#176;)</string>
 </resources>

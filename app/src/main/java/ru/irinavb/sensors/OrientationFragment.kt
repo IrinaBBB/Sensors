@@ -13,15 +13,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import ru.irinavb.sensors.databinding.FragmentLightSensorBinding
+import ru.irinavb.sensors.databinding.FragmentOrientationBinding
 import java.time.LocalDateTime
 
-private const val FILE_LIGHT_SENSOR = "light_sensor.txt"
+private const val FILE_ORIENTATION = "orientation.txt"
 
-class LightSensorFragment : Fragment(), SensorEventListener {
+class OrientationFragment : Fragment(), SensorEventListener {
 
-    private var _binding: FragmentLightSensorBinding? = null
+    private var _binding: FragmentOrientationBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var sensorManager: SensorManager
     private var accelerometer: Sensor? = null
 
@@ -29,23 +30,25 @@ class LightSensorFragment : Fragment(), SensorEventListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentLightSensorBinding.inflate(inflater, container, false)
+        _binding = FragmentOrientationBinding.inflate(inflater, container, false)
         sensorManager = activity?.getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION)
+        sensorManager.registerListener(this, accelerometer, SensorManager
+            .SENSOR_DELAY_NORMAL)
         return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        val lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)
-        if (lightSensor != null) {
+        val sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION)
+        if (sensor != null) {
             sensorManager.registerListener(
                 this,
-                lightSensor,
+                sensor,
                 SensorManager.SENSOR_DELAY_NORMAL
             )
         } else {
-            Toast.makeText(requireContext(), "No Light Sensor found!", Toast.LENGTH_LONG)
+            Toast.makeText(requireContext(), "No Orientation Sensor found!", Toast.LENGTH_LONG)
                 .show()
         }
     }
@@ -62,13 +65,14 @@ class LightSensorFragment : Fragment(), SensorEventListener {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onSensorChanged(event: SensorEvent?) {
-        binding.lightSensorText.text = event!!.values[0].toString()
+        binding.xOrientationValueText.text = event!!.values[0].toString()
+        binding.yOrientationValueText.text = event.values[1].toString()
+        binding.zOrientationValueText.text = event.values[2].toString()
 
-        val text = "light sensor ${LocalDateTime.now()}: Ambient Light (lx): ${event.values[0]}\n"
-
-        Util.writeToInternalStorage(requireContext(), FILE_LIGHT_SENSOR, text)
+        val text =  "orientation ${LocalDateTime.now()}: X -> ${event.values[0]}, " +
+                "Y -> ${event.values[1]}, Z -> ${event.values[2]}\n"
+        Util.writeToInternalStorage(requireContext(), FILE_ORIENTATION, text)
     }
 
-    override fun onAccuracyChanged(event: Sensor?, p1: Int) {
-    }
+    override fun onAccuracyChanged(event: Sensor?, p1: Int) {}
 }

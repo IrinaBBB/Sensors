@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OrientationFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".OrientationFragment">
+
+        <TextView
+            android:id="@+id/xOrientationLabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/azimuth_angle_around_the_z_axis"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            android:typeface="sans"
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/yOrientationLabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/pitch_angle_around_the_x_axis"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            android:typeface="sans"
+            app:layout_constraintEnd_toEndOf="@+id/xOrientationValueText"
+            app:layout_constraintStart_toStartOf="@+id/xOrientationValueText"
+            app:layout_constraintTop_toBottomOf="@+id/xOrientationValueText" />
+
+        <TextView
+            android:id="@+id/zOrientationLabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/roll_angle_around_the_y_axis"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            android:typeface="sans"
+            app:layout_constraintEnd_toEndOf="@+id/yOrientationValueText"
+            app:layout_constraintStart_toStartOf="@+id/yOrientationValueText"
+            app:layout_constraintTop_toBottomOf="@+id/yOrientationValueText" />
+
+        <TextView
+            android:id="@+id/xOrientationValueText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/_0"
+            android:textColor="@color/textColor"
+            android:textSize="28sp"
+            android:typeface="sans"
+            app:layout_constraintEnd_toEndOf="@+id/xOrientationLabelText"
+            app:layout_constraintStart_toStartOf="@+id/xOrientationLabelText"
+            app:layout_constraintTop_toBottomOf="@+id/xOrientationLabelText"
+            tools:text="0" />
+
+        <TextView
+            android:id="@+id/yOrientationValueText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/_0"
+            android:textColor="@color/textColor"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="@+id/yOrientationLabelText"
+            app:layout_constraintStart_toStartOf="@+id/yOrientationLabelText"
+            app:layout_constraintTop_toBottomOf="@+id/yOrientationLabelText"
+            tools:text="0" />
+
+        <TextView
+            android:id="@+id/zOrientationValueText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="32dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/_0"
+            android:textColor="@color/textColor"
+            android:textSize="28sp"
+            android:typeface="sans"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/zOrientationLabelText"
+            app:layout_constraintStart_toStartOf="@+id/zOrientationLabelText"
+            app:layout_constraintTop_toBottomOf="@+id/zOrientationLabelText"
+            tools:text="0" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="32dp"
+            android:contentDescription="@string/cube"
+            android:src="@drawable/axis"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

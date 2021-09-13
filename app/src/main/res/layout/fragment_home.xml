@@ -1,173 +1,268 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#efefef"
-    android:paddingTop="26dp"
     tools:context=".HomeFragment">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/accelerometer_card_view"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="5dp"
-        app:layout_constraintEnd_toStartOf="@+id/compass_card_view"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:background="#efefef"
+        android:paddingTop="26dp"
+        tools:context=".HomeFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/accelerometer_card_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="15dp">
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/compass_card_view"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/accelerometer_image_view"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:contentDescription="@string/accelerometer"
-                android:src="@drawable/speed"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:layout_width="match_parent"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/accelerometer"
-                android:textAllCaps="true"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@id/accelerometer_image_view"
-                app:layout_constraintStart_toStartOf="@+id/accelerometer_image_view"
-                app:layout_constraintTop_toBottomOf="@id/accelerometer_image_view" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                android:padding="15dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/compass_card_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="5dp"
-        app:layout_constraintBottom_toBottomOf="@id/accelerometer_card_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/accelerometer_card_view"
-        app:layout_constraintTop_toTopOf="@id/accelerometer_card_view">
+                <ImageView
+                    android:id="@+id/accelerometer_image_view"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:contentDescription="@string/accelerometer"
+                    android:src="@drawable/speed"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accelerometer"
+                    android:textAllCaps="true"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@id/accelerometer_image_view"
+                    app:layout_constraintStart_toStartOf="@+id/accelerometer_image_view"
+                    app:layout_constraintTop_toBottomOf="@id/accelerometer_image_view" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/compass_card_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="15dp">
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintBottom_toBottomOf="@id/accelerometer_card_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/accelerometer_card_view"
+            app:layout_constraintTop_toTopOf="@id/accelerometer_card_view">
 
-            <ImageView
-                android:id="@+id/compass_image_view"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:contentDescription="@string/compass"
-                android:src="@drawable/compass"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:layout_width="match_parent"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/magnetometer"
-                android:textAllCaps="true"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@id/compass_image_view"
-                app:layout_constraintStart_toStartOf="@+id/compass_image_view"
-                app:layout_constraintTop_toBottomOf="@id/compass_image_view" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                android:padding="15dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/light_card_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="5dp"
-        app:layout_constraintEnd_toStartOf="@+id/proximity_card_view"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/accelerometer_card_view">
+                <ImageView
+                    android:id="@+id/compass_image_view"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:contentDescription="@string/compass"
+                    android:src="@drawable/compass"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/magnetometer"
+                    android:textAllCaps="true"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@id/compass_image_view"
+                    app:layout_constraintStart_toStartOf="@+id/compass_image_view"
+                    app:layout_constraintTop_toBottomOf="@id/compass_image_view" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/light_card_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="15dp">
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/proximity_card_view"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/accelerometer_card_view">
 
-            <ImageView
-                android:id="@+id/light_image_view"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:contentDescription="@string/light_sensor"
-                android:src="@drawable/light_bulb"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:layout_width="match_parent"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/light_sensor"
-                android:textAllCaps="true"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@id/light_image_view"
-                app:layout_constraintStart_toStartOf="@+id/light_image_view"
-                app:layout_constraintTop_toBottomOf="@id/light_image_view" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                android:padding="15dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/proximity_card_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/light_card_view"
-        app:layout_constraintTop_toTopOf="@+id/light_card_view">
+                <ImageView
+                    android:id="@+id/light_image_view"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:contentDescription="@string/light_sensor"
+                    android:src="@drawable/light_bulb"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/light_sensor"
+                    android:textAllCaps="true"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@id/light_image_view"
+                    app:layout_constraintStart_toStartOf="@+id/light_image_view"
+                    app:layout_constraintTop_toBottomOf="@id/light_image_view" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/proximity_card_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="15dp">
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/light_card_view"
+            app:layout_constraintTop_toTopOf="@+id/light_card_view">
 
-            <ImageView
-                android:id="@+id/proximity_image_view"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:contentDescription="@string/proximity_sensor"
-                android:src="@drawable/radar"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-            <TextView
-                android:layout_width="match_parent"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/proximity"
-                android:textAllCaps="true"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/proximity_image_view"
-                app:layout_constraintStart_toStartOf="@+id/proximity_image_view"
-                app:layout_constraintTop_toBottomOf="@+id/proximity_image_view" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                android:padding="15dp">
 
+                <ImageView
+                    android:id="@+id/proximity_image_view"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:contentDescription="@string/orientation"
+                    android:src="@drawable/radar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/proximity"
+                    android:textAllCaps="true"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/proximity_image_view"
+                    app:layout_constraintStart_toStartOf="@+id/proximity_image_view"
+                    app:layout_constraintTop_toBottomOf="@+id/proximity_image_view" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/orientation_card_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="32dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/light_card_view"
+            app:layout_constraintTop_toBottomOf="@+id/light_card_view">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                app:layout_constraintEnd_toStartOf="@+id/constraintLayout9"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:id="@+id/orientation_image_view"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:contentDescription="@string/proximity_sensor"
+                    android:src="@drawable/axis"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/orientation"
+                    android:textAllCaps="true"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/orientation_image_view"
+                    app:layout_constraintStart_toStartOf="@+id/orientation_image_view"
+                    app:layout_constraintTop_toBottomOf="@+id/orientation_image_view" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/steps_card_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/orientation_card_view"
+            app:layout_constraintTop_toTopOf="@+id/orientation_card_view">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                app:layout_constraintEnd_toEndOf="@+id/orientation_card_view"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/constraintLayout8">
+
+                <ImageView
+                    android:id="@+id/steps_image_view"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:contentDescription="@string/steps"
+                    android:src="@drawable/footprint"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/steps"
+                    android:textAllCaps="true"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/steps_image_view"
+                    app:layout_constraintStart_toStartOf="@+id/steps_image_view"
+                    app:layout_constraintTop_toBottomOf="@+id/steps_image_view" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
