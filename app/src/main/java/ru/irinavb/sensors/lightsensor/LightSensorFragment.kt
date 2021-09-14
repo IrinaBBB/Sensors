@@ -1,4 +1,4 @@
-package ru.irinavb.sensors
+package ru.irinavb.sensors.lightsensor
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

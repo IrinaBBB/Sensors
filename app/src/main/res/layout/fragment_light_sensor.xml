@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MagnetometerFragment">
+    tools:context=".lightsensor.LightSensorFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".MagnetometerFragment">
+        tools:context=".lightsensor.LightSensorFragment">
 
         <TextView
-            android:id="@+id/LightSensorLabelText"
+            android:id="@+id/light_sensor_label_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -21,9 +21,9 @@
             android:textColor="@color/textColor"
             android:textSize="24sp"
             android:typeface="sans"
-            app:layout_constraintEnd_toEndOf="@+id/imageView"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintEnd_toEndOf="@+id/lightsensor_main_image_view"
+            app:layout_constraintStart_toStartOf="@+id/lightsensor_main_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/lightsensor_main_image_view" />
 
 
         <TextView
@@ -36,14 +36,14 @@
             android:textColor="@color/textColor"
             android:textSize="42sp"
             android:typeface="sans"
-            app:layout_constraintEnd_toEndOf="@+id/LightSensorLabelText"
-            app:layout_constraintStart_toStartOf="@+id/LightSensorLabelText"
-            app:layout_constraintTop_toBottomOf="@+id/LightSensorLabelText"
+            app:layout_constraintEnd_toEndOf="@+id/light_sensor_label_text"
+            app:layout_constraintStart_toStartOf="@+id/light_sensor_label_text"
+            app:layout_constraintTop_toBottomOf="@+id/light_sensor_label_text"
             tools:text="0" />
 
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/lightsensor_main_image_view"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_marginTop="32dp"

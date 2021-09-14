@@ -1,50 +1,39 @@
-package ru.irinavb.sensors
+package ru.irinavb.sensors.proximitysensor
 
-import android.content.Context
-import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorEventListener
-import android.hardware.SensorManager
-import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
+import org.koin.android.ext.android.inject
 import ru.irinavb.sensors.databinding.FragmentProximitySensorBinding
-import java.time.LocalDateTime
 
-private const val FILE_PROXIMITY = "proximity.txt"
 
-class ProximitySensorFragment : Fragment(), SensorEventListener {
+class ProximitySensorFragment : Fragment() {
 
     private var _binding: FragmentProximitySensorBinding? = null
     private val binding get() = _binding!!
-    private lateinit var sensorManager: SensorManager
-    private var accelerometer: Sensor? = null
+
+    private val viewModel by inject<ProximityViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentProximitySensorBinding.inflate(inflater, container, false)
-        sensorManager = activity?.getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY)
+        viewModel.createProximitySensor()
+        viewModel.currentProximity.observe(viewLifecycleOwner, {
+            binding.proximitySensorText.text = it.toString()
+        })
+
         return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        val sensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY)
-        if (sensor != null) {
-            sensorManager.registerListener(
-                this,
-                sensor,
-                SensorManager.SENSOR_DELAY_NORMAL
-            )
-        } else {
+        val sensor = viewModel.registerProximityListener()
+        if (sensor == null) {
             Toast.makeText(requireContext(), "No Proximity Sensor found!", Toast.LENGTH_LONG)
                 .show()
         }
@@ -52,21 +41,11 @@ class ProximitySensorFragment : Fragment(), SensorEventListener {
 
     override fun onPause() {
         super.onPause()
-        sensorManager.unregisterListener(this)
+        viewModel.unregisterProximityListener()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    override fun onSensorChanged(event: SensorEvent?) {
-        binding.proximitySensorText.text = event!!.values[0].toString()
-
-        val text =  "proximity sensor ${LocalDateTime.now()}: Proximity -> \n"
-        Util.writeToInternalStorage(requireContext(), FILE_PROXIMITY, text)
-    }
-
-    override fun onAccuracyChanged(event: Sensor?, p1: Int) {}
 }

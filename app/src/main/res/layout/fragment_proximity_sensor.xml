@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProximitySensorFragment">
+    tools:context=".proximitysensor.ProximitySensorFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".ProximitySensorFragment">
+        tools:context=".proximitysensor.ProximitySensorFragment">
 
         <TextView
             android:id="@+id/proximity_sensor_label_text"
@@ -18,14 +18,13 @@
             android:layout_marginTop="32dp"
             android:fontFamily="sans-serif"
             android:text="@string/proximity"
-            android:textColor="@color/textColor"
             android:textAllCaps="true"
+            android:textColor="@color/textColor"
             android:textSize="24sp"
             android:typeface="sans"
-            app:layout_constraintEnd_toEndOf="@+id/imageView"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
+            app:layout_constraintEnd_toEndOf="@+id/proximity_main_image_view"
+            app:layout_constraintStart_toStartOf="@+id/proximity_main_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/proximity_main_image_view" />
 
         <TextView
             android:id="@+id/proximity_sensor_text"
@@ -42,9 +41,8 @@
             app:layout_constraintTop_toBottomOf="@+id/proximity_sensor_label_text"
             tools:text="0" />
 
-
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/proximity_main_image_view"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_marginTop="32dp"

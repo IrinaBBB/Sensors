@@ -31,32 +31,32 @@
     </fragment>
     <fragment
         android:id="@+id/accelerometerFragment"
-        android:name="ru.irinavb.sensors.AccelerometerFragment"
+        android:name="ru.irinavb.sensors.accelerometer.AccelerometerFragment"
         android:label="fragment_accelerometer"
         tools:layout="@layout/fragment_accelerometer" />
     <fragment
         android:id="@+id/compassFragment"
-        android:name="ru.irinavb.sensors.MagnetometerFragment"
+        android:name="ru.irinavb.sensors.magnetometer.MagnetometerFragment"
         android:label="fragment_compass"
         tools:layout="@layout/fragment_magnetometer" />
     <fragment
         android:id="@+id/lightSensorFragment"
-        android:name="ru.irinavb.sensors.LightSensorFragment"
+        android:name="ru.irinavb.sensors.lightsensor.LightSensorFragment"
         android:label="fragment_light_sensor"
         tools:layout="@layout/fragment_light_sensor" />
     <fragment
         android:id="@+id/proximitySensorFragment"
-        android:name="ru.irinavb.sensors.ProximitySensorFragment"
+        android:name="ru.irinavb.sensors.proximitysensor.ProximitySensorFragment"
         android:label="fragment_proximity_sensor"
         tools:layout="@layout/fragment_proximity_sensor" />
     <fragment
         android:id="@+id/orientationFragment"
-        android:name="ru.irinavb.sensors.OrientationFragment"
+        android:name="ru.irinavb.sensors.orientation.OrientationFragment"
         android:label="fragment_orientation"
         tools:layout="@layout/fragment_orientation" />
     <fragment
         android:id="@+id/stepsFragment"
-        android:name="ru.irinavb.sensors.StepsFragment"
+        android:name="ru.irinavb.sensors.steps.StepsFragment"
         android:label="fragment_steps"
         tools:layout="@layout/fragment_steps" />
 </navigation>

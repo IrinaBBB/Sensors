@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StepsFragment">
+    tools:context=".steps.StepsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".StepsFragment">
+        tools:context=".steps.StepsFragment">
 
         <TextView
             android:id="@+id/steps_counter_label_text"
@@ -22,9 +22,9 @@
             android:textColor="@color/textColor"
             android:textSize="24sp"
             android:typeface="sans"
-            app:layout_constraintEnd_toEndOf="@+id/imageView"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintEnd_toEndOf="@+id/accelerometer_main_image_view"
+            app:layout_constraintStart_toStartOf="@+id/accelerometer_main_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/accelerometer_main_image_view" />
 
 
         <TextView
@@ -44,7 +44,7 @@
 
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/accelerometer_main_image_view"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_marginTop="32dp"

@@ -1,4 +1,4 @@
-package ru.irinavb.sensors
+package ru.irinavb.sensors.util
 
 import android.content.Context
 import android.content.Context.MODE_APPEND
