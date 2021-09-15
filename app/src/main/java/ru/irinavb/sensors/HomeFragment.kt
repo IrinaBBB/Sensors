@@ -47,7 +47,6 @@ class HomeFragment : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_stepsFragment)
         }
     }
-    
 
     override fun onDestroy() {
         super.onDestroy()

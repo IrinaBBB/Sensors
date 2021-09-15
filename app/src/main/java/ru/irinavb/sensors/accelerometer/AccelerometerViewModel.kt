@@ -6,18 +6,22 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ru.irinavb.sensors.util.Util
 import java.time.LocalDateTime
+import java.time.temporal.ChronoUnit
 
 private const val FILE_ACCELEROMETER = "accelerometer.txt"
 
 class AccelerometerViewModel(application: Application, private val sensorManager: SensorManager) :
     AndroidViewModel(application),
     SensorEventListener {
+
+    private var localDateTime: LocalDateTime? = null
 
     private val _accelerometerValues = MutableLiveData<FloatArray>()
     val accelerometerValues: LiveData<FloatArray>
@@ -44,10 +48,15 @@ class AccelerometerViewModel(application: Application, private val sensorManager
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onSensorChanged(event: SensorEvent?) {
         _accelerometerValues.value = event!!.values
-        val text =  "accelerometer ${LocalDateTime.now()}: X -> ${event.values[0]}, " +
-                "Y -> ${event.values[1]}, Z -> ${event.values[2]}\n"
 
-        Util.writeToInternalStorage(getApplication(), FILE_ACCELEROMETER, text)
+        if (localDateTime == null ||
+            ChronoUnit.SECONDS.between(localDateTime, LocalDateTime.now()) >= 3) {
+
+            val text = "accelerometer ${LocalDateTime.now()}: X -> ${event.values[0]}, " +
+                    "Y -> ${event.values[1]}, Z -> ${event.values[2]}\n"
+            Util.writeToInternalStorage(getApplication(), FILE_ACCELEROMETER, text)
+            localDateTime = LocalDateTime.now()
+        }
     }
 
     override fun onAccuracyChanged(event: Sensor?, p1: Int) {}

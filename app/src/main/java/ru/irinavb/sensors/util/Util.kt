@@ -2,28 +2,30 @@ package ru.irinavb.sensors.util
 
 import android.content.Context
 import android.content.Context.MODE_APPEND
-import java.io.FileOutputStream
-import java.io.IOException
+import android.util.Log
+import java.io.*
 import java.nio.charset.StandardCharsets
 
 class Util {
     companion object {
         fun writeToInternalStorage(context: Context, file: String, text: String) {
-            var fos: FileOutputStream? = null
-            try {
-                fos = context.openFileOutput(file, MODE_APPEND)
-                fos?.write(text.toByteArray(StandardCharsets.UTF_8))
-            } catch (e: IOException) {
-                e.printStackTrace()
-            } finally {
-                if (fos != null) {
-                    try {
-                        fos.close()
-                    } catch (e: IOException) {
-                        e.printStackTrace()
-                    }
-                }
+            BufferedWriter(
+                OutputStreamWriter(context.openFileOutput(file, MODE_APPEND))
+            ).use { bufferedWriter ->
+                bufferedWriter.write(
+                    text
+                )
             }
+        }
+
+        @Throws(IOException::class)
+        fun writeToExternalStorage(
+            context: Context,
+            fileName: String?, text: String?
+        ) {
+            val externalFilesDir = File(context.getExternalFilesDir(null), fileName)
+            Log.d("FilePath", externalFilesDir.absolutePath)
+            BufferedWriter(FileWriter(externalFilesDir)).use { writer -> writer.write(text) }
         }
     }
 }

@@ -31,6 +31,7 @@ class AccelerometerFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onResume() {
         super.onResume()
         val sensor = viewModel.registerAccelerometerSensorListener()
