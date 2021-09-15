@@ -1,10 +1,8 @@
 package ru.irinavb.sensors
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import ru.irinavb.sensors.databinding.FragmentHomeBinding
@@ -24,6 +22,8 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
         setUpAppNavigation(view)
+        setHasOptionsMenu(true)
+
         return view
     }
 
@@ -47,6 +47,7 @@ class HomeFragment : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_stepsFragment)
         }
     }
+    
 
     override fun onDestroy() {
         super.onDestroy()

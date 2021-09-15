@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="ru.irinavb.sensors.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        android:label="Sensors"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_compassFragment"
             app:destination="@id/compassFragment" />
@@ -32,31 +32,40 @@
     <fragment
         android:id="@+id/accelerometerFragment"
         android:name="ru.irinavb.sensors.accelerometer.AccelerometerFragment"
-        android:label="fragment_accelerometer"
+        android:label="Accelerometer"
         tools:layout="@layout/fragment_accelerometer" />
     <fragment
         android:id="@+id/compassFragment"
         android:name="ru.irinavb.sensors.magnetometer.MagnetometerFragment"
-        android:label="fragment_compass"
+        android:label="Magnetometer"
         tools:layout="@layout/fragment_magnetometer" />
     <fragment
         android:id="@+id/lightSensorFragment"
         android:name="ru.irinavb.sensors.lightsensor.LightSensorFragment"
-        android:label="fragment_light_sensor"
+        android:label="Light Sensor"
         tools:layout="@layout/fragment_light_sensor" />
     <fragment
         android:id="@+id/proximitySensorFragment"
         android:name="ru.irinavb.sensors.proximitysensor.ProximitySensorFragment"
-        android:label="fragment_proximity_sensor"
+        android:label="Proximity"
         tools:layout="@layout/fragment_proximity_sensor" />
     <fragment
         android:id="@+id/orientationFragment"
         android:name="ru.irinavb.sensors.orientation.OrientationFragment"
-        android:label="fragment_orientation"
+        android:label="Orientation"
         tools:layout="@layout/fragment_orientation" />
     <fragment
         android:id="@+id/stepsFragment"
         android:name="ru.irinavb.sensors.steps.StepsFragment"
-        android:label="fragment_steps"
+        android:label="Steps Counter"
         tools:layout="@layout/fragment_steps" />
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="ru.irinavb.sensors.sensorlist.ListFragment"
+        android:label="Sensor List"
+        tools:layout="@layout/fragment_list">
+        <action
+            android:id="@+id/action_listFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

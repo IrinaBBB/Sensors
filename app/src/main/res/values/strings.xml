@@ -26,4 +26,7 @@
     <string name="azimuth_angle_around_the_z_axis">Azimuth (angle around the z-axis in &#176;)</string>
     <string name="pitch_angle_around_the_x_axis">Pitch (angle around the x-axis in &#176;)</string>
     <string name="roll_angle_around_the_y_axis">Roll (angle around the y-axis in &#176;)</string>
+    <string name="sensors_app">sensors app</string>
+    <string name="show_sensor_list">show device\'s sensor list</string>
+    <string name="sensor_icon">sensor icon</string>
 </resources>
