@@ -1,5 +1,6 @@
 package ru.irinavb.sensors.proximitysensor
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ class ProximitySensorFragment : Fragment() {
 
     private val viewModel by inject<ProximityViewModel>()
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,7 +26,7 @@ class ProximitySensorFragment : Fragment() {
         _binding = FragmentProximitySensorBinding.inflate(inflater, container, false)
         viewModel.createProximitySensor()
         viewModel.currentProximity.observe(viewLifecycleOwner, {
-            binding.proximitySensorText.text = it.toString()
+            binding.proximitySensorText.text = "$it cm"
         })
 
         return binding.root

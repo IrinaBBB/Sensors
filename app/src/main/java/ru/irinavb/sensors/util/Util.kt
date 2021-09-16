@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Context.MODE_APPEND
 import android.util.Log
 import java.io.*
-import java.nio.charset.StandardCharsets
 
 class Util {
     companion object {
